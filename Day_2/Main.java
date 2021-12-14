@@ -14,7 +14,7 @@ class Main {
       int vertical = 0;
       int horizontal = 0;
 
-      BufferedReader fileInput = new BufferedReader(new FileReader(filePath));
+      try (BufferedReader fileInput = new BufferedReader(new FileReader(filePath))) {
         for (String line; (line = fileInput.readLine()) != null;) {
             split = line.split(" ", 0);
             if (split[0].equals("up")){
@@ -34,7 +34,10 @@ class Main {
               break;
             }
         }
-      
+      } catch (NumberFormatException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
         System.out.println("Vertical = " + vertical);
         System.out.println("Horizontal = " + horizontal);
 
