@@ -1,5 +1,10 @@
-for i in range (1,2000):
-    file = open("input.txt")
-    data = file.splitlines(False)
-    print(data)
-    
+import os
+THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
+file_location = os.path.join(THIS_FOLDER, 'input.txt')
+f = open(file_location)
+input = f.read()
+
+
+
+inputSplit = input.splitlines()
+print(inputSplit)
