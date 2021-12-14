@@ -8,7 +8,7 @@ class Main {
       String filePath = f.getCanonicalPath();
 
       filePath = filePath.substring(0, filePath.length() - 9);
-      filePath = filePath + "Day_2/input.txt";
+      filePath = filePath + "input.txt";
 
       String split[];
       int vertical = 0;
