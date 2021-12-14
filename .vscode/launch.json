@@ -5,19 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Current File",
-            "type": "python",
-            "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal"
-        },
-        {
             "type": "java",
             "name": "Launch Main",
             "request": "launch",
             "mainClass": "Day_2.Main",
             "projectName": "Advent_Code_2021_2b214160"
         },
-        {}
+        {
+            "name": "Python",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        }
     ]
 }
