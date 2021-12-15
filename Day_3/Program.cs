@@ -91,8 +91,22 @@ namespace Program
                     epsilonRate += "1";
                 }
             }
-            Console.WriteLine(gammaRate);
-            Console.WriteLine(epsilonRate);
+
+            //Create powerConsumption int
+            int powerConsumption = 0;
+
+            //Convert into binary long's
+            long gammaRateLong = Int64.Parse(gammaRate);
+            long epsilonRateLong = Int64.Parse(epsilonRate);
+
+            //Convert binary numbers into decimals
+            int gammaRateInt = Convert.ToInt32(gammaRateLong.ToString(), 2);
+            int epsilonRateInt = Convert.ToInt32(epsilonRateLong.ToString(), 2);
+
+            //Multiply numbers together to get powerConsumption
+            powerConsumption = gammaRateInt * epsilonRateInt;
+
+            Console.WriteLine(powerConsumption);
         }
     }
 }
