@@ -4,7 +4,7 @@ namespace Program
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Pt1Main(string[] args)
         {
             string line;
             int numOfLines = 0;
