@@ -6,6 +6,14 @@ namespace Program2
     {
         static void Main(string[] args)
         {
+            int powerConsumption = powerConsumptionMethod();
+            Console.WriteLine("powerConsumption " + powerConsumption);
+        }
+
+        static int powerConsumptionMethod(){
+            
+            
+
             string line;
             int numOfLines = 0;
             //Pass the file path and file name to the StreamReader constructor
@@ -106,7 +114,8 @@ namespace Program2
             //Multiply numbers together to get powerConsumption
             powerConsumption = gammaRateInt * epsilonRateInt;
 
-            Console.WriteLine(powerConsumption);
+            return powerConsumption;
+        
         }
     }
 }
