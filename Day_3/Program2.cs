@@ -48,6 +48,17 @@ namespace Program2
                 fileText = new StreamReader("input.txt");
             }
 
+            //Check if NumOf0 is STRICTLY greater
+            if (NumOf0 > NumOf1)
+            {
+                //If it is then remove all values that have a 1 in that place
+            }
+            else
+            {
+                //Else remove all values with a 0 in that place
+            }
+
+            //Start by only doing first character and removing those lines with it
 
         }
         static void CO2ScrubberMethod()
