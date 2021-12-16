@@ -18,6 +18,8 @@ namespace Program2
             string line;
             int NumOf0 = 0;
             int NumOf1 = 0;
+            int lineNumber = 0;
+            string[] inputs = new string[1000];
 
             for (int i = 0; i < 12; i++)
             {
@@ -52,14 +54,40 @@ namespace Program2
             if (NumOf0 > NumOf1)
             {
                 //If it is then remove all values that have a 1 in that place
+                line = fileText.ReadLine();
+                int i = 0;
+
+                while (line != null)
+                {
+                    inputs[i] = line;
+                    i += 1;
+                    line = fileText.ReadLine();
+                }
+                //Close file and reopen to restart at first line
+                fileText.Close();
+                fileText = new StreamReader("input.txt");
             }
             else
             {
                 //Else remove all values with a 0 in that place
+                line = fileText.ReadLine();
+                int i = 0;
+
+                while (line != null)
+                {
+                    inputs[i] = line;
+                    i += 1;
+                    line = fileText.ReadLine();
+                }
+                //Close file and reopen to restart at first line
+                fileText.Close();
+                fileText = new StreamReader("input.txt");
+
             }
 
             //Start by only doing first character and removing those lines with it
-
+            //Create array with all the different input lines in it
+Console.WriteLine("BREAKPOINT HERE");
         }
         static void CO2ScrubberMethod()
         {
