@@ -32,10 +32,10 @@ namespace Program2
         static string oxygenGeneratorMethod()
         {
 
-            // Add all the lines from input.txt into an array
-            StreamReader fileText = new StreamReader("input.txt");
+            // Add all the lines from input2.txt into an array
+            StreamReader fileText = new StreamReader("input2.txt");
             string line;
-            string[] inputs = new string[1000];
+            string[] inputs = new string[12];
             int lineNum = 0;
             line = fileText.ReadLine();
             string oxygen = "null";
@@ -51,13 +51,13 @@ namespace Program2
 
 
             //For loop that runs 12 times
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < 5; i++)
             {
                 // Check if the list element is 0 if it is skip the element
                 int NumOf0 = 0;
                 int NumOf1 = 0;
 
-                for (int j = 0; j < 1000; j++)
+                for (int j = 0; j < 12; j++)
                 {
                     //Split the array element into characters 
                     char[] characters = inputs[j].ToCharArray();
@@ -78,14 +78,14 @@ namespace Program2
 
                 // Find lesser value
                 int lesser = 49;
-                if (NumOf0 < NumOf1)
+                if (NumOf0 < NumOf1 || NumOf0 == NumOf1)
                 {
                     lesser = 48;
                 }
 
                 // Run through the list again finding which elements have the lesser character in that place
 
-                for (int k = 0; k < 1000; k++)
+                for (int k = 0; k < 12; k++)
                 {
                     char[] characters = inputs[k].ToCharArray();
                     if (characters.Length != 1)
@@ -119,10 +119,10 @@ namespace Program2
         {
 
 
-            // Add all the lines from input.txt into an array
-            StreamReader fileText = new StreamReader("input.txt");
+            // Add all the lines from input2.txt into an array
+            StreamReader fileText = new StreamReader("input2.txt");
             string line;
-            string[] inputs = new string[1000];
+            string[] inputs = new string[12];
             int lineNum = 0;
             line = fileText.ReadLine();
             string CO2 = "null";
@@ -138,13 +138,13 @@ namespace Program2
 
 
             //For loop that runs 12 times
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < 5; i++)
             {
                 // Check if the list element is 0 if it is skip the element
                 int NumOf0 = 0;
                 int NumOf1 = 0;
 
-                for (int j = 0; j < 1000; j++)
+                for (int j = 0; j < 12; j++)
                 {
                     //Split the array element into characters 
                     char[] characters = inputs[j].ToCharArray();
@@ -165,14 +165,14 @@ namespace Program2
 
                 // Find lesser value
                 int lesser = 48;
-                if (NumOf0 > NumOf1)
+                if (NumOf0 < NumOf1 || NumOf0 == NumOf1)
                 {
                     lesser = 49;
                 }
 
                 // Run through the list again finding which elements have the lesser character in that place
 
-                for (int k = 0; k < 1000; k++)
+                for (int k = 0; k < 12; k++)
                 {
                     char[] characters = inputs[k].ToCharArray();
                     if (characters.Length != 1)
