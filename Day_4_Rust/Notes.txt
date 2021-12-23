@@ -1,0 +1,5 @@
+Have a list with all the different columns and rows
+Have a counter or a list or something which has how many within the row/column have been found
+Have a checker to see if there is a counter / row with 5 found variables
+Use while loop to run through while 'oneComplete' is false 
+Have one complete turned to true if one of the values have 5, this will brteak out the for loop and tell you which column/row will win first
