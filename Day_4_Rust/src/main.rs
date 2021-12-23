@@ -16,28 +16,64 @@ fn main() {
     22 11 13  6  5
      2  0 12  3  7";
 
-     let mut drawnSplit = drawn.split(",");
+    let mut drawnSplit = drawn.split(",");
     let drawnVec: Vec<&str> = drawnSplit.collect();
+    let drawnLen = drawnVec.len();
 
     let mut boardSplit = boards.split_whitespace();
-    let boardsVec: Vec<&str> = boardSplit.collect();
+    let mut boardsVec: Vec<&str> = boardSplit.collect();
+    let boardsLen = boardsVec.len();
 
-    let mut i = 0;
+    let mut j = 0;
     loop {
-        let mut value1 = boardsVec[i];
-        let mut value2 = boardsVec[i + 1];
-        let mut value3 = boardsVec[i + 2];
-        let mut value4 = boardsVec[i + 3];
-        let mut value5 = boardsVec[i + 4];
+        // This will run through the loop of all drawn numbers
+        let mut drawnValue = drawnVec[j];
+        let mut i = 0;
+        loop {
+            let mut value1 = boardsVec[i];
+            let mut value2 = boardsVec[i + 1];
+            let mut value3 = boardsVec[i + 2];
+            let mut value4 = boardsVec[i + 3];
+            let mut value5 = boardsVec[i + 4];
 
-        let my_string = value1.to_string(); // `parse()` works with `&str` and `String`!
-        let my_int = my_string.parse::<i32>().unwrap();
+            // Check if two strings are equal
+            // String from drawnSplit and string value1, value2
 
-        i += 5;
-        if i == 75{
+            if drawnValue == value1{
+            boardsVec[i] = "null";
+            }
+
+            if drawnValue == value2{
+                boardsVec[i + 1] = "null";
+            }
+
+            if drawnValue == value3{
+                boardsVec[i + 2] = "null";
+            }
+
+            if drawnValue == value4{
+                boardsVec[i + 3] = "null";
+            }
+
+            if drawnValue == value5{
+                boardsVec[i + 4] = "null";
+            }
+
+            i += 5;
+            if i == boardsLen {
+                break;
+            }
+        }
+
+        // Check if there is a line horizontally that has all null characters
+        // If there isn't then increment j
+        // If there is then break out and say which board has that value
+
+        j += 1;
+        if j == drawnLen {
             break;
         }
     }
 
-    println!("{}", 1);
+    println!("{}", "Breakpoint");
 }
