@@ -103,6 +103,40 @@ fn main() {
 
         // Need to check vertical values here
 
+        checkerI = 0;
+        loop {
+            if boardsVec[checkerI] == "null" {
+                if boardsVec[checkerI + 5] == "null" {
+                    if boardsVec[checkerI + 10] == "null" {
+                        if boardsVec[checkerI + 15] == "null" {
+                            if boardsVec[checkerI + 20] == "null" {
+                                found = true;
+                                foundValue = checkerI as u32;
+                                break;
+                            } else {
+                                checkerI += 25;
+                            }
+                        } else {
+                            checkerI += 25;
+                        }
+                    } else {
+                        checkerI += 25;
+                    }
+                } else {
+                    checkerI += 25;
+                }
+            } else {
+                checkerI += 25;
+            }
+            if checkerI == boardsLen {
+                break;
+            }
+        }
+
+
+
+
+
         // If there is then break out and say which board has that value
         if found == true {
             break;
