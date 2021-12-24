@@ -27,9 +27,12 @@ fn main() {
     let boardsLen = boardsVec.len();
 
     let mut j = 0;
+    let mut found = false;
+    let mut foundValue: u32 = 0;
+    let mut drawnValue = "";
     loop {
         // This will run through the loop of all drawn numbers
-        let mut drawnValue = drawnVec[j];
+        drawnValue = drawnVec[j];
         let mut i = 0;
         loop {
             let mut value1 = boardsVec[i];
@@ -41,23 +44,23 @@ fn main() {
             // Check if two strings are equal
             // String from drawnSplit and string value1, value2
 
-            if drawnValue == value1{
-            boardsVec[i] = "null";
+            if drawnValue == value1 {
+                boardsVec[i] = "null";
             }
 
-            if drawnValue == value2{
+            if drawnValue == value2 {
                 boardsVec[i + 1] = "null";
             }
 
-            if drawnValue == value3{
+            if drawnValue == value3 {
                 boardsVec[i + 2] = "null";
             }
 
-            if drawnValue == value4{
+            if drawnValue == value4 {
                 boardsVec[i + 3] = "null";
             }
 
-            if drawnValue == value5{
+            if drawnValue == value5 {
                 boardsVec[i + 4] = "null";
             }
 
@@ -68,21 +71,83 @@ fn main() {
         }
 
         // Check if there is a line horizontally that has all null characters
-        
-        // If there isn't then increment j
-        // If there is then break out and say which board has that value
-        // This can be done by taking 24 away until the number is negative, e.g. row 19,8,13,17,5 would be starting from boardsVec[35]
-            // This would mean 35 - 24 = 11 -> 11 - 24 = -13
-                // This is done twice meaning the second board
-            // If the start of the line is boardsVec[60]
-                // 60 - 24 = 36 -> 36 - 24 = 12 -> 12 - 24 = -12
-                    // This is done 3 times meaning the third board
+        let mut checkerI = 0;
+        loop {
+            if boardsVec[checkerI] == "null" {
+                if boardsVec[checkerI + 1] == "null" {
+                    if boardsVec[checkerI + 2] == "null" {
+                        if boardsVec[checkerI + 3] == "null" {
+                            if boardsVec[checkerI + 4] == "null" {
+                                found = true;
+                                foundValue = checkerI as u32;
+                                break;
+                            } else {
+                                checkerI += 5;
+                            }
+                        } else {
+                            checkerI += 5;
+                        }
+                    } else {
+                        checkerI += 5;
+                    }
+                } else {
+                    checkerI += 5;
+                }
+            } else {
+                checkerI += 5;
+            }
+            if checkerI == boardsLen {
+                break;
+            }
+        }
 
+        // Need to check vertical values here
+
+        // If there is then break out and say which board has that value
+        if found == true {
+            break;
+        }
+        // If there isn't then increment j
         j += 1;
         if j == drawnLen {
             break;
         }
     }
 
-    println!("{}", "Breakpoint");
+    // Currently the start of the row that has been drawn fully is in foundValue. Now find which board that value belongs to
+    // This can be done by taking 24 away until the number is negative, e.g. row 19,8,13,17,5 would be starting from boardsVec[35]
+    // This would mean 35 - 24 = 11 -> 11 - 24 = -13
+    // This is done twice meaning the second board
+    // If the start of the line is boardsVec[50]
+    // 50 - 24 = 26 -> 26 - 24 = 2 -> 2 - 24 = -22
+    // This is done 3 times meaning the third board
+    let mut whichBoard = 0;
+    loop {
+        if foundValue > 24 {
+            foundValue = foundValue - 24;
+            whichBoard = whichBoard + 1;
+        }
+        if foundValue <= 24 {
+            whichBoard = whichBoard + 1;
+            break;
+        }
+    }
+
+    // Add the rest of the values within the board in order to get the final answer
+    // Start at (whichBoard - 1) * 25
+    // Add the next 24 values that are not null
+    let startValue = (whichBoard - 1) * 25;
+    let mut totalValue = 0;
+    for i in 0..24 {
+        if boardsVec[i + startValue] != "null" {
+            let boardsVecu32: u32 = boardsVec[i + startValue].parse().unwrap();
+            totalValue = boardsVecu32 + totalValue;
+        }
+    }
+
+    // Multiply the totalValue of the rest of the board by the last drawn number
+    let drawnValueu32: u32 = drawnValue.parse().unwrap();
+    let boardValue = totalValue * drawnValueu32;
+
+    println!("{}", boardValue);
 }
