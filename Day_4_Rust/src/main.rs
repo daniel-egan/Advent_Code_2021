@@ -1,20 +1,22 @@
 fn main() {
     let drawn = "7,4,9,5,11,17,23,2,0,14,21,24,10,16,13,6,15,25,12,22,18,20,8,19,3,26,1";
     let boards = "22 13 17 11  0
-     8  2 23  4 24
-    21  9 14 16  7
-     6 10  3 18  5
-     1 12 20 15 19
-     3 15  0  2 22
-     9 18 13 17  5
-    19  8  7 25 23
-    20 11 10 24  4
-    14 21 16 12  6
-    14 21 17 24  4
-    10 16 15  9 19
-    18  8 23 26 20
-    22 11 13  6  5
-     2  0 12  3  7";
+    8  2 23  4 24
+   21  9 14 16  7
+    6 10  3 18  5
+    1 12 20 15 19
+   
+    3 15  0  2 22
+    9 18 13 17  5
+   19  8  7 25 23
+   20 11 10 24  4
+   14 21 16 12  6
+   
+   14 21 17 24  4
+   10 16 15  9 19
+   18  8 23 26 20
+   22 11 13  6  5
+    2  0 12  3  7";
 
     let mut drawnSplit = drawn.split(",");
     let drawnVec: Vec<&str> = drawnSplit.collect();
@@ -66,8 +68,15 @@ fn main() {
         }
 
         // Check if there is a line horizontally that has all null characters
+        
         // If there isn't then increment j
         // If there is then break out and say which board has that value
+        // This can be done by taking 24 away until the number is negative, e.g. row 19,8,13,17,5 would be starting from boardsVec[35]
+            // This would mean 35 - 24 = 11 -> 11 - 24 = -13
+                // This is done twice meaning the second board
+            // If the start of the line is boardsVec[60]
+                // 60 - 24 = 36 -> 36 - 24 = 12 -> 12 - 24 = -12
+                    // This is done 3 times meaning the third board
 
         j += 1;
         if j == drawnLen {
