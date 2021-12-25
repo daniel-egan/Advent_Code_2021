@@ -6,4 +6,5 @@ Kotlin
 JavaScript
 VBScript
 Visual Basic
+Batch file
 Might have to reuse some
