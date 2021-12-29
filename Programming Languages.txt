@@ -1,5 +1,6 @@
 SQL
 Ruby
+R
 Go
 Swift
 Kotlin
